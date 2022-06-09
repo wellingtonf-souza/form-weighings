@@ -1,0 +1,106 @@
+/* Fontes
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+@font-face {
+    font-family: 'myriad-pro-light';
+    src: url('fonts/fonts-myriad-pro/MYRIADPRO-LIGHT.otf');
+}
+
+@font-face {
+    font-family: 'bebas-neue-light';
+    src: url('fonts/fonts-bebas-neue/BEBASNEUE-LIGHT.otf');
+}
+
+/* Componentes
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+div{
+    font-family: "myriad-pro-light"
+}
+h1, h2, h3{
+    font-family: 'bebas-neue-light';
+    color: #f37021
+}
+
+label, input, .Select-menu-outer, .Select-value, .Select-placeholder {
+    text-align:'left';
+    color:"#272727";
+    font-family: "myriad-pro-light";
+}
+
+.rc-slider-mark-text{
+    font-family: "myriad-pro-light"
+}
+
+.CalendarMonth, .DayPicker_weekHeader {
+    font-family: "myriad-pro-light"
+}
+
+/* bt-submit
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.bt-submit{
+    background: #f37021;
+    font-family: 'bebas-neue-light';
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding: 1rem 1rem 1rem;
+    width: 100%;
+    color: white;
+    font-weight: bold;
+
+}
+
+.bt-submit:hover {
+    background-color: #f6f6f6;
+    color: #f37021;
+    transition: all .2s cubic-bezier(.785,.135,.15,.86);
+    transition-delay: .1s;
+}
+
+/* form-login
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.form-login {
+    border-collapse: collapse;
+    border-spacing: 0;
+    display: table;
+    border: 1px solid #ccc;
+    width:400px;
+    position: absolute;
+    z-index: 15;
+    top: 30%;
+    left: 45%;
+    margin: -100px 0 0 -100px;
+}
+
+.form-login {
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 20px 0 rgba(0, 0, 0, 0.7);
+}
+
+.content-blocks {
+    margin-top: 8em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.div-content{
+    margin-left: 70px;
+    margin-right: 30px;
+    margin-top: 30px
+}
+
+.div-margin{
+    border: 1px solid #ccc;
+    padding: 40px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+}
