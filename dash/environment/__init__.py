@@ -1,1 +1,2 @@
-from .settings import APP_HOST, APP_CONN
+from .settings import MYSQL_DATABASE, MYSQL_USER, MYSQL_PASSWORD
+from .settings import MYSQL_HOSTNAME, MYSQL_PORT, APP_HOST

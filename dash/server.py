@@ -1,6 +1,6 @@
 from dash import Dash
 import secrets
-from environment import APP_CONN
+from environment import MYSQL_USER, MYSQL_PASSWORD, MYSQL_HOSTNAME, MYSQL_PORT, MYSQL_DATABASE
 from users import db, User as base
 from flask_login import LoginManager, UserMixin
 import dash_bootstrap_components as dbc
@@ -17,9 +17,17 @@ app = Dash(
     ]
 )
 
+URI = "mysql+pymysql://{user}:{password}@{hostname}:{port}/{database}".format(
+        user = MYSQL_USER,
+        password = MYSQL_PASSWORD,
+        hostname = MYSQL_HOSTNAME,
+        port = MYSQL_PORT,
+        database = MYSQL_DATABASE
+)
+
 server.config.update(
     SECRET_KEY=secrets.token_hex(),
-    SQLALCHEMY_DATABASE_URI = APP_CONN,
+    SQLALCHEMY_DATABASE_URI = URI,
     SQLALCHEMY_TRACK_MODIFICATIONS=False
 )
 

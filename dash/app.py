@@ -3,9 +3,10 @@ from dash import html, dcc
 from layout import footer
 from server import app, server
 from utils import urls
-from environment import APP_HOST
+from environment import APP_HOST, MYSQL_USER, MYSQL_PASSWORD
 from dash import Input, Output, html
 from flask_login import current_user
+from users import Database
 
 CONTENT_STYLE = {
     "margin-left": "13rem"
@@ -53,6 +54,7 @@ def render_page(pathname):
     )
 
 if __name__=='__main__':
+    Database(user = MYSQL_USER, password = MYSQL_PASSWORD).start()
     server.run(
         host=APP_HOST,
         port=8085,

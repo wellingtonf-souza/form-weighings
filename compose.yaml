@@ -1,10 +1,36 @@
 version: "3.8"
 
 services:
+  mysql:
+    image: mysql:5.7
+    container_name: ${MYSQL_HOSTNAME}
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
+      MYSQL_DATABASE: "${MYSQL_DATABASE}"
+      MYSQL_USER: "${MYSQL_USER}"
+      MYSQL_PASSWORD: "${MYSQL_PASSWORD}"
+    ports:
+      - 3306:${MYSQL_PORT}
+    healthcheck:
+        test: mysqladmin ping -h 127.0.0.1 -u $$MYSQL_USER --password=$$MYSQL_PASSWORD
+        timeout: 20s
+        retries: 10
+
   dash:
     build: ./dash
     image: dash-hydroponic
     container_name: dash-hydroponic-container
     restart: always
+    environment:
+      MYSQL_DATABASE: "${MYSQL_DATABASE}"
+      MYSQL_USER: "${MYSQL_USER}"
+      MYSQL_PASSWORD: "${MYSQL_PASSWORD}"
+      MYSQL_HOSTNAME: "${MYSQL_HOSTNAME}"
+      MYSQL_PORT: ${MYSQL_PORT}
+      APP_HOST: "${APP_HOST}"
+    depends_on:
+      mysql:
+        condition: service_healthy
     ports:
       - 8085:8085

@@ -8,7 +8,7 @@ db = SQLAlchemy()
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(50), unique=True)
-    password = db.Column(db.String(80))
+    password = db.Column(db.String(150))
 
 user = Table('user', User.metadata)
 
@@ -27,3 +27,13 @@ def del_user(username):
     conn = engine.connect()
     conn.execute(delete)
     conn.close()
+
+class Database:
+    def __init__(self, user, password) -> None:
+        self.user = user
+        self.password = password
+
+    def start(self) -> None:
+        create_user_table()
+        del_user(username = self.user)
+        add_user(username = self.user, password = self.password)
