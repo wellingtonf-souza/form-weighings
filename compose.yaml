@@ -1,0 +1,10 @@
+version: "3.8"
+
+services:
+  dash:
+    build: ./dash
+    image: dash-hydroponic
+    container_name: dash-hydroponic-container
+    restart: always
+    ports:
+      - 8085:8085
