@@ -58,5 +58,5 @@ if __name__=='__main__':
     server.run(
         host=APP_HOST,
         port=APP_PORT,
-        debug=False
+        debug=True
     ) 

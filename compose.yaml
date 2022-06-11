@@ -22,6 +22,8 @@ services:
     image: dash-hydroponic
     container_name: dash-hydroponic-container
     restart: always
+    volumes:
+      - "./dash:/app"
     environment:
       MYSQL_DATABASE: "${MYSQL_DATABASE}"
       MYSQL_USER: "${MYSQL_USER}"
