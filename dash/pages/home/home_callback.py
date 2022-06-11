@@ -1,6 +1,7 @@
 from dash import Input, Output, State, html
 from server import app
 import time
+from pages.home.aws import Dynamodb
 
 bad_request = [
     html.Img(src = "assets/img/icons8-erro-96.png"),
@@ -39,6 +40,10 @@ def toggle_modal(button_input, button_close, is_open, plant_id, weight):
     elif type(plant_id) != int or type(weight) != int:
         return not is_open, bad_request
     elif type(plant_id) == int and type(weight) == int:
-        return not is_open, success
+        status_code = Dynamodb().send(plant_id = plant_id, weight = weight)
+        if status_code == 200:
+            return not is_open, success
+        else: 
+            return not is_open, interval_error 
     elif button_input or button_close:
         return not is_open, None
