@@ -13,3 +13,40 @@ Para testes locais é necessário o criar um arquivo `.env` e preencher as vari�
 ```bash
 docker-compose up -d
 ```
+
+Para realizar o deploy no Heroku é necessário ter um banco MySQL em cloud e executar os seguintes passos:
+
+1. Acessar a pasta especifica da plataforma:
+```bash
+cd dash
+```
+2. Realizar o login no Heroku:
+```bash
+heroku login
+```
+
+3. Realizar o login no Container Registry:
+```bash 
+heroku container:login
+```
+
+4. Criar o aplicativo:
+```bash
+heroku create
+```
+
+5. Com o comando acima foi criado um aplicativo no Heroku e seu nome foi apresentado em tela. Este nome também pode ser visualizado executando `heroku apps`. Neste momento é necessário acessar o Heroku via navegador, ir nas configurações do aplicativo recém-criado e adicionar as variáveis de ambiente necessárias para a aplicação, definidas no arquivo `.env`.
+
+6. Crie a imagem e envie para o Container Registry. app_name é referente ao nome do seu aplicativo, obtido anteriormente ao executar `heroku apps`.
+```bash
+heroku container:push web -a app_name
+```
+7. Libere a imagem para seu aplicativo:
+```bash
+heroku container:release web -a app_name
+```
+
+8. Agora já é possível abir o aplicativo pelo seu navegador:
+```bash
+heroku open -a app_name
+```
