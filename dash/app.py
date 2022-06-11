@@ -3,7 +3,7 @@ from dash import html, dcc
 from layout import footer
 from server import app, server
 from utils import urls
-from environment import APP_HOST, USER, PASSWORD
+from environment import APP_PORT, APP_HOST, USER, PASSWORD
 from dash import Input, Output, html
 from flask_login import current_user
 from users import Database
@@ -57,6 +57,6 @@ if __name__=='__main__':
     Database(user = USER, password = PASSWORD).start()
     server.run(
         host=APP_HOST,
-        port=8085,
-        debug=True
+        port=APP_PORT,
+        debug=False
     ) 

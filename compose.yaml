@@ -34,8 +34,9 @@ services:
       AWS_SECRET_ACCESS_KEY: "${AWS_SECRET_ACCESS_KEY}"
       APP_USER: "${APP_USER}"
       APP_PASSWORD: "${APP_PASSWORD}"
+      PORT: ${PORT}
     depends_on:
       mysql:
         condition: service_healthy
     ports:
-      - 8085:8085
+      - 8085:${PORT}
