@@ -28,7 +28,7 @@ modal = dbc.Modal([
         html.Span("Usuário e/ou senha incorretos")
     ]),
     dbc.ModalFooter(
-        get_button_submit(_id = "close-modal-unauthenticated", text="CLOSE")
+        get_button_submit(_id = "close-modal-unauthenticated", text="FECHAR")
     )],
     id="modal-unauthenticated",
     is_open=False
